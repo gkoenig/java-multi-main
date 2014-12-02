@@ -1,43 +1,26 @@
-/**
- * 
- */
 package test.geko;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import test.geko.util.Dispatcher;
 
 public class entrypoint {
-
-	/**
-	 * 
-	 */
-	public entrypoint() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @param argsO
-	 */
-	public static void main(String[] args) throws Exception{
-		System.out.println("ENTER entrypoint::main()\n");
+	
+	public static void main(String[] args) throws Exception {
 		
-		final Map<String, Class<?>> ENTRY_POINTS = new HashMap<String, Class<?>>();
-		ENTRY_POINTS.put("validate", validate.class);
-		ENTRY_POINTS.put("merge", merge.class);
-		ENTRY_POINTS.put("compare", compare.class);
-		    
-		if(args.length < 1){
-            throw new IllegalArgumentException("at least one argument required");
-        }
-        final Class<?> entryPoint = ENTRY_POINTS.get(args[0]);
-        if(entryPoint==null){
-        	throw new IllegalArgumentException("unknown class provided: " + args[0]);
-        }
-        final String[] argsCopy = args.length > 1 ? Arrays.copyOfRange(args, 1, args.length) : new String[0];
-        entryPoint.getMethod("main", String[].class).invoke(null,(Object) argsCopy);
-		System.out.println("EXIT entrypoint::main()\n");
+		int exitCode = -1;
+		Dispatcher disp = new Dispatcher();
+		try {
+			disp.addClass("validate", validate.class, "validates ... stuff");
+			disp.addClass("mergetool", merge.class, "merges ... stuff");
+			disp.addClass("compare", compare.class, "compares ... stuff");
 		
+			disp.dispatch(args);
+			exitCode=0;
+		}
+		catch(Throwable e){
+			e.printStackTrace();
+		}
+		
+		System.exit(exitCode);
 	}
 
 }
