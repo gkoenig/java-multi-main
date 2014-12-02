@@ -23,14 +23,14 @@ public class merge {
 	private static void printUsage() {
 		HelpFormatter helpFormatter = new HelpFormatter();
 		helpFormatter.setWidth(80);
-		String usageStr = "java -jar name-of-jar.jar merge <param-1>";
+		String usageStr = "java -jar entrypoint-0.0.1-SNAPSHOT.jar merge <param-1>";
 		
 		helpFormatter.printHelp(usageStr, new Options());
 	}
 	
 	public static void main(String[] args) {
 		
-		System.out.println("ENTER merge::main()\n");
+		System.out.println("executing: merge\n");
 		CommandLine cmd = null;
 		try {
 			// parse the command line arguments
@@ -46,7 +46,7 @@ public class merge {
 			printUsage();
 			System.exit(-1);
 		}
-		System.out.println("EXIT merge::main()\n");
+		
 		System.exit(0);
 	}
 

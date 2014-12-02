@@ -23,14 +23,14 @@ public class compare {
 	private static void printUsage() {
 		HelpFormatter helpFormatter = new HelpFormatter();
 		helpFormatter.setWidth(80);
-		String usageStr = "java -jar name-of-jar.jar compare <param-1> <param-2> <param-3>";
+		String usageStr = "java -jar entrypoint-0.0.1-SNAPSHOT.jar compare <param-1> <param-2> <param-3>";
 		
 		helpFormatter.printHelp(usageStr, new Options());
 	}
 	
 	public static void main(String[] args) {
 		
-		System.out.println("ENTER compare::main()\n");
+		System.out.println("executing: compare\n");
 		CommandLine cmd = null;
 		try {
 			// parse the command line arguments
@@ -46,7 +46,7 @@ public class compare {
 			printUsage();
 			System.exit(-1);
 		}
-		System.out.println("EXIT compare::main()\n");
+		
 		System.exit(0);
 	}
 

@@ -23,7 +23,7 @@ public class validate {
 	private static void printUsage() {
 		HelpFormatter helpFormatter = new HelpFormatter();
 		helpFormatter.setWidth(80);
-		String usageStr = "java -jar name-of-jar.jar validate <param-1> <param-2>";
+		String usageStr = "java -jar entrypoint-0.0.1-SNAPSHOT.jar validate <param-1> <param-2>";
 		
 		helpFormatter.printHelp(usageStr, new Options());
 	}
@@ -32,7 +32,7 @@ public class validate {
 	 */
 	public static void main(String[] args) {
 
-		System.out.println("ENTER validate::main()\n");
+		System.out.println("executing: validate\n");
 		
 		CommandLine cmd = null;
 		try {
@@ -49,8 +49,7 @@ public class validate {
 			printUsage();
 			System.exit(-1);
 		}
-				
-		System.out.println("EXIT validate::main()\n");
+		
 		System.exit(0);
 	}
 
